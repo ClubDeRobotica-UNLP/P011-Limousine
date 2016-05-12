@@ -11,6 +11,7 @@
 
 char Buffer[2] = {0, 0}; // Buffer[0] : Adelante, Buffer[1] : Giro.
 byte baseSpeed = 175;
+int timerID = 0;
 byte balFlag = 0;
 byte lightsOn = 0;
 Timer t;
@@ -21,7 +22,7 @@ void setup()
   pinMode(LED2, OUTPUT);
   digitalWrite(LED1, 0);
   digitalWrite(LED2, 0);
-  t.every(1000, blinkLights);
+  timerID = t.every(1000, blinkLights);
 
   delay(500);
 
@@ -57,19 +58,19 @@ void loop()
         break;
 
       case 'G': /*Forward left*/
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 1.2*baseSpeed, 0.5*baseSpeed);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, 1.2 * baseSpeed, 0.5 * baseSpeed);
         break;
 
       case 'I': /*  Forward Right */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 0.5*baseSpeed, 1.2*baseSpeed);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, 0.5 * baseSpeed, 1.2 * baseSpeed);
         break;
 
       case 'H': /*  Back Left  */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -1.2*baseSpeed, -0.5*baseSpeed);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -1.2 * baseSpeed, -0.5 * baseSpeed);
         break;
 
       case 'J':  /* Back Right  */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -0.5*baseSpeed, -1.2*baseSpeed);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -0.5 * baseSpeed, -1.2 * baseSpeed);
         break;
 
       case 'W': /* Leds on */
@@ -90,7 +91,7 @@ void loop()
 
       case 'x': /* Balizas off */
         balFlag = 0;
-        if(!lightsOn)
+        if (!lightsOn)
         {
           digitalWrite(LED1, 0);
           digitalWrite(LED2, 0);
@@ -98,43 +99,70 @@ void loop()
         break;
 
       case '0':
-        baseSpeed = 100;        
+        baseSpeed = 100;
+        t.stop(timerID);
+        timerID = t.every(1000, blinkLights);
         break;
 
       case '1':
-        baseSpeed = 110;        
+        baseSpeed = 110;
+        t.stop(timerID);
+        timerID = t.every(900, blinkLights);
         break;
 
       case '2':
-        baseSpeed = 120;        
+        baseSpeed = 120;
+        t.stop(timerID);
+        timerID = t.every(800, blinkLights);
         break;
 
       case '3':
-        baseSpeed = 130;        
+        baseSpeed = 130;
+        t.stop(timerID);
+        timerID =  t.every(700, blinkLights);
+
         break;
 
       case '4':
-        baseSpeed = 140;        
+        baseSpeed = 140;
+        t.stop(timerID);
+        timerID = t.every(600, blinkLights);
+
         break;
 
+
       case '5':
-        baseSpeed = 150;        
+        baseSpeed = 150;
+        t.stop(timerID);
+        timerID = t.every(500, blinkLights);
+
         break;
 
       case '6':
-        baseSpeed = 160;        
+        baseSpeed = 160;
+        t.stop(timerID);
+        timerID = t.every(400, blinkLights);
+
         break;
 
       case '7':
-        baseSpeed = 170;        
+        baseSpeed = 170;
+        t.stop(timerID);
+        timerID = t.every(300, blinkLights);
+
         break;
 
       case '8':
-        baseSpeed = 180;        
+        baseSpeed = 180;
+        t.stop(timerID);
+        timerID = t.every(200, blinkLights);
+
         break;
 
       case '9':
-        baseSpeed = 200;        
+        baseSpeed = 200;
+        t.stop(timerID);
+        timerID = t.every(100, blinkLights);
         break;
 
       case 'S':
@@ -147,20 +175,20 @@ void loop()
 
 
 /*---------------------------------------------------------------------------------
- * Timer Balizas 
- *----------------------------------------------------------------------------------*/
+   Timer Balizas
+  ----------------------------------------------------------------------------------*/
 void blinkLights()
 {
-  if(balFlag && !lightsOn)
+  if (balFlag && !lightsOn)
   {
-    if(digitalRead(LED1))
+    if (digitalRead(LED1))
     {
-      digitalWrite(LED1,0);
-      digitalWrite(LED2,0);  
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
     } else {
-      digitalWrite(LED1,1);
-      digitalWrite(LED2,1);    
-    }    
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+    }
   }
 }
 
