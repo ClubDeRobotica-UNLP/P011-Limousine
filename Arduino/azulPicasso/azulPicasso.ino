@@ -10,6 +10,7 @@
 #include "Timer.h"
 
 char Buffer[2] = {0, 0}; // Buffer[0] : Adelante, Buffer[1] : Giro.
+byte baseSpeed = 175;
 byte balFlag = 0;
 byte lightsOn = 0;
 Timer t;
@@ -40,35 +41,35 @@ void loop()
     switch (Buffer[0])
     {
       case 'F':
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 200, 200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, baseSpeed, baseSpeed);
         break;
 
       case 'B':
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -200, -200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -baseSpeed, -baseSpeed);
         break;
 
       case 'L':
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 200, -200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, baseSpeed, -baseSpeed);
         break;
 
       case 'R':
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -200, 200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -baseSpeed, baseSpeed);
         break;
 
       case 'G': /*Forward left*/
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 200, 100);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, 1.2*baseSpeed, 0.5*baseSpeed);
         break;
 
       case 'I': /*  Forward Right */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, 100, 200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, 0.5*baseSpeed, 1.2*baseSpeed);
         break;
 
       case 'H': /*  Back Left  */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -200, -100);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -1.2*baseSpeed, -0.5*baseSpeed);
         break;
 
       case 'J':  /* Back Right  */
-        MoverMotores(M1PWM, M1A, M2PWM, M2A, -100, -200);
+        MoverMotores(M1PWM, M1A, M2PWM, M2A, -0.5*baseSpeed, -1.2*baseSpeed);
         break;
 
       case 'W': /* Leds on */
@@ -94,6 +95,46 @@ void loop()
           digitalWrite(LED1, 0);
           digitalWrite(LED2, 0);
         }
+        break;
+
+      case '0':
+        baseSpeed = 100;        
+        break;
+
+      case '1':
+        baseSpeed = 110;        
+        break;
+
+      case '2':
+        baseSpeed = 120;        
+        break;
+
+      case '3':
+        baseSpeed = 130;        
+        break;
+
+      case '4':
+        baseSpeed = 140;        
+        break;
+
+      case '5':
+        baseSpeed = 150;        
+        break;
+
+      case '6':
+        baseSpeed = 160;        
+        break;
+
+      case '7':
+        baseSpeed = 170;        
+        break;
+
+      case '8':
+        baseSpeed = 180;        
+        break;
+
+      case '9':
+        baseSpeed = 200;        
         break;
 
       case 'S':
