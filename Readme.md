@@ -1,17 +1,26 @@
 # [P011] Le Limousine
 
-## Descripci髇:
+## Implementaci贸n azulPicasso
 
-El repositorio contiene distintos desarrollos para la plataforma Limousine.
+### Descripci贸n:
 
-## Integrantes:
-- Santiago Rodr韌uez
-- Germ醤 Scillone
+Esta implementaci贸n del robot propone controlar la movilidad del mismo a partir de una conexi贸n bluetooth con cualquier dispositivo capaz de conectarse, en este caso un smartphone con android.
+
+### Integrantes:
+- Santiago Rodr铆guez
+- Germ谩n Scillone
 - Lucas Martire
+- Jorge Anderson
 
-## Estado del proyecto:
-- [ ] Desarrollo AzulPicasso: Control remoto via bluetooth.
+### Hardware Necesario:
+- M贸dulo Bluetooth
 
-	
-## Link al proyecto:
-[Link al proyecto en el sitio del Club](http://cdr.ing.unlp.edu.ar/proyecto/placa-de-pruebas-arduino-uno/)
+### Software Necesario:
+- Aplicaci贸n "RC Controller Bluetooth" para Android.
+
+### Estado del proyecto:
+- [X] Control de motores.
+- [X] Comunicaci贸n via bluetooth con la aplicaci贸n.
+- [X] Respuesta a controles.
+- [X] Control de velocidad.
+
